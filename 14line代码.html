@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>7*2=14🚇</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    .navbar {
+      background-color: #d5a7a1;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+      background: none;
+      border: none;
+      color: white;
+      position: absolute;
+      left: 10px;
+    }
+
+    .navbar-title {
+      font-size: 64px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 220px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 999;
+      text-align: left;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #d5a7a1;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .section {
+      display: none;
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #d5a7a1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px auto;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #c78c84;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      color: white;
+      background-color: #d5a7a1;
+      padding: 8px;
+      border-radius: 8px;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 20px;
+      font-size: 22px;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .recent-route {
+      background-color: #f2f2f2;
+      padding: 15px;
+      margin: 10px auto;
+      width: 80%;
+      border-radius: 10px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .recent-route h4 {
+      margin: 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .recent-route-content {
+      margin-left: 10px;
+    }
+
+    .recent-route p {
+      margin: 2px 0 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <button class="menu-btn" onclick="event.stopPropagation(); toggleSidebar()">☰</button>
+    <div class="navbar-title">7*2=14🚇</div>
+    <div class="navbar-title">6+8=14🚇</div>
+    <button onclick="toggleMusic()" style="position: absolute; right: 10px; background-color: white; color: #d5a7a1; border: none; border-radius: 8px; padding: 6px 12px; font-weight: bold; cursor: pointer;">京港地铁の小曲</button>
+  </div>
+  </div>
+
+  <div class="sidebar" id="sidebar" onclick="event.stopPropagation();">
+    <h3>菜单</h3>
+    <a onclick="showSection('support')">我要为妈宝铁助力</a>
+    <a onclick="showSection('balance')">余额查询</a>
+    <a onclick="showSection('tickets')">购买北京地铁14号线车票</a>
+    <a onclick="showSection('main')">返回首页</a>
+  </div>
+
+  <div class="content">
+    <div class="section active" id="main">
+      <h2>北京地铁14号线线路图</h2>
+<img src="北铁14号线线路图.jpg" alt="北铁14号线线路图">
+
+      <h2>充值</h2>
+<button onclick="recharge()">点击充值</button>
+<p id="rechargeResult"></p>
+
+      <h2>近期旅程</h2>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+          <h4>北京市-丰台区</h4>
+          <p>北工大西门 - 北京南站（换乘）</p>
+          <p>回家喽</p>
+        </div>
+      </div>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+          <h4>北京市-朝阳区</h4>
+          <p>望京-北工大西门</p>
+          <p>吃米粉</p>
+        </div>
+      </div>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+          <h4>北京市-朝阳区</h4>
+          <p>北工大西门-善各庄</p>
+          <p>至此去过14号线所有站了。</p>
+        </div>
+      </div>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+          <h4>北京市-丰台区</h4>
+          <p>北工大西门-丽泽商务区</p>
+          <p>一个晚上很漂亮的地方~</p>
+        </div>
+      </div>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+         <h4>北京市-丰台区</h4>
+         <p>景风门站（换乘）-北工大西门</p>
+         <p>我的小红书ID🤫</p>
+        </div>
+      </div>
+      <div class="recent-route">
+        <div class="recent-route-icon">🚇</div>
+        <div class="recent-route-content">
+          <h4>北京市-丰台区</h4>
+          <p>北工大西门-张仪村停车场（园博园-大瓦窑之间）</p>
+          <p>达成成就：在14号线上拍14号线</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="support">
+      <p><strong>为妈宝铁助力</strong></p>
+      <p><strong>为京港地铁捐钱：</strong></p>
+      <div style="margin-top: 10px;">
+        <button onclick="donate()">点击捐款</button>
+      </div>
+      <p id="donateCount">你已捐款 0 亿</p>
+      <p id="donateTotal">累计捐款 0 亿</p>
+    </div>
+
+    <div class="section" id="balance">
+      <p><strong>余额查询</strong></p>
+      <div style="margin-top: 10px;">
+        <button onclick="queryBalance()">查询</button>
+      </div>
+      <p id="balanceResult"></p>
+    </div>
+
+    <div class="section" id="tickets">
+      <p><strong>购买北京地铁14号线车票</strong></p>
+      <div style="margin-bottom: 10px;">
+        <button onclick="showImage('zhangguozhuang')">开往张郭庄</button>
+        <button onclick="showImage('shangezhuang')">开往善各庄</button>
+      </div>
+      <div id="ticketImage"></div>
+    </div>
+  </div>
+
+  <script>
+function recharge() {
+  const messages = [
+    "您的钱已经在望京吃米线时花光，余额不足！",
+    "您的钱已经在丽泽商务区G-step跳舞时花光，余额不足！",
+    "您的钱已经在大望路G-step跳舞时花光，余额不足！",
+    "您的钱已经在北京南站买高铁票时花光，余额不足！",
+    "您的钱已经在北工大西门买烤冷面时花光，余额不足！",
+    "您的钱已经在九龙山合生汇购物时花光，余额不足！",
+    "您的钱已经在枣营蓝色港湾购物时花光，余额不足！",
+    "您的钱已经在朝阳公园娱乐时花光，余额不足！",
+    "您的钱已经在平乐园买一点点时用完，余额不足！",
+    "您的钱已经在金台路被6号线涌入的人群挤丢，余额不足！"
+  ];
+  const msg = messages[Math.floor(Math.random() * messages.length)];
+  document.getElementById("rechargeResult").textContent = msg;
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove('open');
+}
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  closeSidebar();
+}
+
+let donateCount = 0;
+function donate() {
+  donateCount++;
+  localStorage.setItem("donateTotal", parseInt(localStorage.getItem("donateTotal") || 0) + 1);
+  document.getElementById("donateCount").textContent = `你已捐款 ${donateCount} 亿`;
+  document.getElementById("donateTotal").textContent = `累计捐款 ${localStorage.getItem("donateTotal")} 亿`;
+
+  if (donateCount === 14 && !document.getElementById("donateNotice")) {
+    const alertMsg = document.createElement("p");
+    alertMsg.textContent = "恭喜你用财富让14号线成为了京港地铁嫡长子！";
+    alertMsg.style.color = "red";
+    alertMsg.style.fontWeight = "bold";
+    alertMsg.id = "donateNotice";
+    document.getElementById("support").appendChild(alertMsg);
+  }
+}
+
+window.onload = function () {
+  if (!localStorage.getItem("donateTotal")) {
+    localStorage.setItem("donateTotal", "0");
+  }
+  document.getElementById("donateTotal").textContent = `累计捐款 ${localStorage.getItem("donateTotal")} 亿`;
+  showSection('main');
+}
+
+function queryBalance() {
+  document.getElementById("balanceResult").textContent = "当前余额：14 RMB";
+}
+
+function showImage(dir) {
+  let imgSrc = "";
+  if (dir === "zhangguozhuang") {
+    imgSrc = "zgz.jpg";
+  } else {
+    imgSrc = "sgz.jpg";
+  }
+  document.getElementById("ticketImage").innerHTML = `<img src="${imgSrc}" alt="车票图">`;
+}
+
+document.addEventListener("click", function (e) {
+  const sidebar = document.getElementById('sidebar');
+  const menuBtn = document.querySelector('.menu-btn');
+  if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+    sidebar.classList.remove('open');
+  }
+});
+function toggleMusic() {
+  const audio = document.getElementById('bgm');
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+</script>
+  <audio id="bgm" src="报站视频.mp3"></audio>
+</body>
+</html>
